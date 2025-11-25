@@ -2,15 +2,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// --- 1. CONFIGURACIÓN (PROYECTO: autenticacion-8faac) ---
+// --- 1. CONFIGURACIÓN (PROYECTO: CUESTIONARIO NEGOCIOS - CLAVES CORREGIDAS) ---
 const firebaseConfig = {
-  apiKey: "AIzaSyAMQpnPJSdicgo5gungVOE0M7OHwkz4P9Y",
-  authDomain: "autenticacion-8faac.firebaseapp.com",
-  projectId: "autenticacion-8faac",
-  storageBucket: "autenticacion-8faac.firebasestorage.app",
-  messagingSenderId: "939518706600",
-  appId: "1:939518706600:web:d28c3ec7de21da8379939d",
-  measurementId: "G-8LXM9VS1M0"
+  apiKey: "AIzaSyCDZHOnzskotkjSZlVkV91D2NEbHYDzfP0",
+  authDomain: "cuestionario-negocios.firebaseapp.com",
+  projectId: "cuestionario-negocios",
+  storageBucket: "cuestionario-negocios.firebasestorage.app",
+  messagingSenderId: "121378663958",
+  appId: "1:121378663958:web:5135ac597a5d9823a04f37",
+  measurementId: "G-CYQQFM7LF1"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -23,7 +23,8 @@ const correosPermitidos = [
     "gorellanas2@unemi.edu.ec", "iastudillol@unemi.edu.ec", "sgavilanezp2@unemi.edu.ec", 
     "jzamoram9@unemi.edu.ec", "fcarrillop@unemi.edu.ec", "naguilarb@unemi.edu.ec", 
     "ehidalgoc4@unemi.edu.ec", "lbrionesg3@unemi.edu.ec", "xsalvadorv@unemi.edu.ec", 
-    "nbravop4@unemi.edu.ec", "jmoreirap6@unemi.edu.ec", "kholguinb2@unemi.edu.ec", "jcastrof8@unemi.edu.ec"
+    "nbravop4@unemi.edu.ec", "jmoreirap6@unemi.edu.ec", "kholguinb2@unemi.edu.ec", 
+    "jcastrof8@unemi.edu.ec"
 ];
 
 // --- 3. BANCO DE PREGUNTAS (Inteligencia de Negocios) ---
