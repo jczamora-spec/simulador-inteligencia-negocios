@@ -174,6 +174,9 @@ function cargarPregunta() {
     document.getElementById('question-text').innerText = `${indiceActual + 1}. ${data.texto}`;
     const cont = document.getElementById('options-container'); cont.innerHTML = '';
     
+    // Botones deshabilitados por defecto en modo Estudio hasta la selección
+    const isStudyMode = document.getElementById('mode-select').value === 'study';
+    
     data.opciones.forEach((opcion, index) => {
         const btn = document.createElement('button');
         btn.innerText = opcion;
@@ -189,21 +192,80 @@ function cargarPregunta() {
     }
 }
 
+// --- FUNCIÓN MODIFICADA PARA EL MODO ESTUDIO ---
 function seleccionarOpcion(index, btnClickeado) {
+    const isStudyMode = document.getElementById('mode-select').value === 'study';
+
+    // Si ya se ha seleccionado una opción en el modo estudio, no permitir cambiar
+    if (isStudyMode && seleccionTemporal !== null) {
+        return;
+    }
+    
     seleccionTemporal = index;
     const botones = document.getElementById('options-container').querySelectorAll('button');
     botones.forEach(b => b.classList.remove('option-selected'));
     btnClickeado.classList.add('option-selected');
+    
+    if (isStudyMode) {
+        mostrarResultadoInmediato(index);
+    } else {
+        // En modo Examen, solo muestra el botón siguiente
+        btnNextQuestion.classList.remove('hidden');
+    }
+}
+
+// --- NUEVA FUNCIÓN: Muestra respuesta y explicación en modo Estudio ---
+function mostrarResultadoInmediato(seleccionada) {
+    const pregunta = preguntasExamen[indiceActual];
+    const correcta = pregunta.respuesta;
+    const cont = document.getElementById('options-container');
+    const botones = cont.querySelectorAll('button');
+    
+    // Deshabilitar todos los botones para que no se pueda cambiar la respuesta
+    botones.forEach(btn => btn.disabled = true);
+
+    // Iterar para mostrar el feedback visual (verde/rojo)
+    botones.forEach((btn, index) => {
+        btn.classList.remove('option-selected'); // Quitar selección temporal
+        
+        if (index === correcta) {
+            btn.classList.add('ans-correct', 'feedback-visible');
+        } else if (index === seleccionada) {
+            btn.classList.add('ans-wrong', 'feedback-visible');
+        }
+    });
+
+    // Añadir la explicación
+    const divExplicacion = document.createElement('div');
+    divExplicacion.className = 'explanation-feedback';
+    divExplicacion.innerHTML = `<strong>Explicación:</strong> ${pregunta.explicacion}`;
+    cont.appendChild(divExplicacion);
+    
+    // Registrar la respuesta y mostrar el botón Siguiente
+    respuestasUsuario.push(seleccionada);
     btnNextQuestion.classList.remove('hidden');
 }
 
+
+// --- EVENTO MODIFICADO para el botón Siguiente ---
 btnNextQuestion.addEventListener('click', () => {
+    const isStudyMode = document.getElementById('mode-select').value === 'study';
+    
+    // En modo estudio, simplemente avanza a la siguiente pregunta
+    if (isStudyMode && seleccionTemporal !== null) {
+        indiceActual++;
+        cargarPregunta();
+        return; 
+    }
+    
+    // Lógica original para Modo Examen
     if (seleccionTemporal !== null) {
         respuestasUsuario.push(seleccionTemporal);
         indiceActual++;
         cargarPregunta();
     }
 });
+
 
 function iniciarReloj() {
     intervaloTiempo = setInterval(() => {
