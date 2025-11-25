@@ -41,7 +41,7 @@ const bancoPreguntas = [
 ];
 
 // VARIABLES GLOBALES
-let preguntasExamen = []; // Se llena aleatoriamente con 30 preguntas
+let preguntasExamen = []; // Se llena aleatoriamente con 20 preguntas
 let indiceActual = 0;
 let respuestasUsuario = []; 
 let seleccionTemporal = null; 
@@ -140,7 +140,7 @@ document.getElementById('btn-google').addEventListener('click', () => {
 
 btnLogout.addEventListener('click', () => { signOut(auth); location.reload(); });
 
-// --- 8. LÓGICA DEL EXAMEN (Aleatorio 30 o Estudio 64) ---
+// --- 8. LÓGICA DEL EXAMEN (Aleatorio 20 o Estudio todas) ---
 document.getElementById('btn-start').addEventListener('click', () => {
     const tiempo = document.getElementById('time-select').value;
     const modo = document.getElementById('mode-select').value;
@@ -152,9 +152,10 @@ document.getElementById('btn-start').addEventListener('click', () => {
     if (modo === 'study') {
         preguntasExamen = [...bancoPreguntas].sort(() => 0.5 - Math.random());
     } else {
+        // Modo Examen: Carga 20 preguntas aleatorias
         preguntasExamen = [...bancoPreguntas]
             .sort(() => 0.5 - Math.random()) 
-            .slice(0, 30); 
+            .slice(0, 20); // 20 PREGUNTAS
     }
     
     respuestasUsuario = []; 
@@ -280,6 +281,15 @@ function terminarQuiz() {
     quizScreen.classList.add('hidden');
     resultScreen.classList.remove('hidden');
     document.getElementById('score-final').innerText = `${aciertos} / ${preguntasExamen.length}`;
+    
+    // --- Ocultar botón Revisar Respuestas si es modo Estudio ---
+    const modeSelect = document.getElementById('mode-select');
+    if (modeSelect && modeSelect.value === 'study') {
+        document.getElementById('btn-review').classList.add('hidden');
+    } else {
+        document.getElementById('btn-review').classList.remove('hidden');
+    }
+    // --------------------------------------------------------
 }
 
 // --- 9. REVISIÓN ---
