@@ -174,9 +174,6 @@ function cargarPregunta() {
     document.getElementById('question-text').innerText = `${indiceActual + 1}. ${data.texto}`;
     const cont = document.getElementById('options-container'); cont.innerHTML = '';
     
-    // Botones deshabilitados por defecto en modo Estudio hasta la selección
-    const isStudyMode = document.getElementById('mode-select').value === 'study';
-    
     data.opciones.forEach((opcion, index) => {
         const btn = document.createElement('button');
         btn.innerText = opcion;
@@ -192,7 +189,7 @@ function cargarPregunta() {
     }
 }
 
-// --- FUNCIÓN MODIFICADA PARA EL MODO ESTUDIO ---
+// --- FUNCIÓN MODIFICADA PARA SEPARAR EL MODO ESTUDIO/EXAMEN ---
 function seleccionarOpcion(index, btnClickeado) {
     const isStudyMode = document.getElementById('mode-select').value === 'study';
 
@@ -209,7 +206,7 @@ function seleccionarOpcion(index, btnClickeado) {
     if (isStudyMode) {
         mostrarResultadoInmediato(index);
     } else {
-        // En modo Examen, solo muestra el botón siguiente
+        // MODO EXAMEN: Solo guarda la selección temporal y muestra el botón Siguiente
         btnNextQuestion.classList.remove('hidden');
     }
 }
@@ -251,14 +248,14 @@ function mostrarResultadoInmediato(seleccionada) {
 btnNextQuestion.addEventListener('click', () => {
     const isStudyMode = document.getElementById('mode-select').value === 'study';
     
-    // En modo estudio, simplemente avanza a la siguiente pregunta
+    // En modo estudio, simplemente avanza a la siguiente pregunta (la respuesta ya fue registrada en mostrarResultadoInmediato)
     if (isStudyMode && seleccionTemporal !== null) {
         indiceActual++;
         cargarPregunta();
         return; 
     }
     
-    // Lógica original para Modo Examen
+    // MODO EXAMEN: Registra la respuesta y avanza (sin feedback inmediato)
     if (seleccionTemporal !== null) {
         respuestasUsuario.push(seleccionTemporal);
         indiceActual++;
