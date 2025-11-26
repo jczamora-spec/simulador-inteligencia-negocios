@@ -43,17 +43,12 @@ const correosPermitidos = [
 // ⚠️ ATENCIÓN: Debes reemplazar estas 5 preguntas de ejemplo por tus 64 preguntas de la materia
 const bancoPreguntas = [
     // PREGUNTAS DE INTELIGENCIA DE NEGOCIOS
+
     {
         texto: "Adoptar tendencias emergentes es una ventaja.",
         opciones: ["Falso", "Verdadero"],
         respuesta: 1,
         explicacion: "Adoptar nuevas tendencias permite a las empresas mantenerse competitivas y aprovechar oportunidades tempranas."
-    },
-    {
-        texto: "Complete: Un DW debe mantener datos...",
-        opciones: ["Eliminar monitoreo", "Anticiparse a cambios del mercado", "Reaccionar tarde siempre", "Ignorar cliente"],
-        respuesta: 1,
-        explicacion: "El análisis en un Data Warehouse facilita la predicción y anticipación a los cambios del mercado (Nota: El texto original de esta pregunta en el PDF contenía un error de tipografía, se ajustó al contexto de las opciones)."
     },
     {
         texto: "Complete: Un Data Warehouse debe mantener datos",
@@ -152,12 +147,6 @@ const bancoPreguntas = [
         explicacion: "Las reglas de validación garantizan que los datos cumplan con los formatos y lógica de negocio requeridos."
     },
     {
-        texto: "BI ayuda a:",
-        opciones: ["Evitar visualizaciones", "Optimizar procesos y detectar ineficiencias", "Eliminar controles", "Aumentar tiempos de respuesta"],
-        respuesta: 1,
-        explicacion: "Al igual que en la pregunta 4, BI es fundamental para la mejora continua y la eficiencia operativa."
-    },
-    {
         texto: "BI puede apoyar decisiones operativas y estratégicas.",
         opciones: ["Falso", "Verdadero"],
         respuesta: 1,
@@ -170,34 +159,16 @@ const bancoPreguntas = [
         explicacion: "Falso. BI integra datos internos y externos (mercado, competidores, economía) para un análisis completo."
     },
     {
-        texto: "BI siempre ignora datos externos.",
-        opciones: ["Falso", "Verdadero"],
-        respuesta: 0,
-        explicacion: "Reiteración: BI se enriquece con datos del entorno, no los ignora."
-    },
-    {
         texto: "BI no requiere visualización.",
         opciones: ["Verdadero", "Falso"],
         respuesta: 1,
         explicacion: "La visualización es crítica en BI para hacer comprensibles los grandes volúmenes de datos analizados."
     },
     {
-        texto: "Adoptar tendencias emergentes es una ventaja.",
-        opciones: ["Verdadero", "Falso"],
-        respuesta: 0,
-        explicacion: "Mantenerse actualizado tecnológicamente ofrece ventajas competitivas sostenibles."
-    },
-    {
         texto: "BI apoya a la organización a:",
         opciones: ["Reaccionar tarde siempre", "Ignorar clientes", "Eliminar monitoreo", "Anticiparse a cambios del mercado"],
         respuesta: 3,
         explicacion: "La capacidad predictiva de BI permite a las empresas ser proactivas en lugar de reactivas."
-    },
-    {
-        texto: "BI ayuda a anticipar cambios del mercado.",
-        opciones: ["Falso", "Verdadero"],
-        respuesta: 1,
-        explicacion: "Analizando patrones históricos y actuales, BI facilita la previsión de tendencias."
     },
     {
         texto: "BI sólo aplica a grandes empresas.",
@@ -210,6 +181,97 @@ const bancoPreguntas = [
         opciones: ["Falso", "Verdadero"],
         respuesta: 0,
         explicacion: "Falso. Uno de los propósitos centrales de BI es precisamente la optimización de procesos mediante datos."
+    },
+    // --- NUEVAS PREGUNTAS (Extraídas de las Imágenes) ---
+    {
+        texto: "BI soporta:",
+        opciones: ["Sólo marketing", "Sólo RRHH", "Sólo finanzas", "Toma de decisiones estratégicas y operativas"],
+        respuesta: 3,
+        explicacion: "BI es transversal a la organización y apoya la toma de decisiones en todos los niveles y departamentos."
+    },
+    {
+        texto: "En el MQ de Gartner, líderes suelen:",
+        opciones: ["Ser de nicho siempre", "No innovar", "Tener soluciones maduras y de alto alcance", "Evitar escalabilidad"],
+        respuesta: 2,
+        explicacion: "En el Cuadrante Mágico (MQ), los líderes se caracterizan por tener una visión completa y alta capacidad de ejecución (soluciones maduras)."
+    },
+    {
+        texto: "En ETL, la transformación puede incluir:",
+        opciones: ["Sólo cifrado", "Sólo backup", "Sólo indexación", "Limpieza, agregación, conformado"],
+        respuesta: 3,
+        explicacion: "La fase de Transformación implica limpiar, estandarizar y agregar datos para que sean útiles en el análisis."
+    },
+    {
+        texto: "En BI, datos pasan por limpieza y transformación antes de almacenarse.",
+        opciones: ["True", "False"],
+        respuesta: 0,
+        explicacion: "Es crucial limpiar y transformar los datos antes de cargarlos al DW para asegurar su calidad y consistencia."
+    },
+    {
+        texto: "En el MQ, visionarios se caracterizan por:",
+        opciones: ["Baja innovación", "No relevancia", "Alta capacidad de innovar", "Sólo nicho local"],
+        respuesta: 2,
+        explicacion: "Los 'Visionarios' en el cuadrante de Gartner tienen una fuerte visión de mercado e innovación, aunque quizás menos capacidad de ejecución que los líderes."
+    },
+    {
+        texto: "En DS OLAP, 'roll-up' es:",
+        opciones: ["Concatenar", "Subir a niveles agregados superiores", "Eliminar dimensiones", "Bajar a detalle"],
+        respuesta: 1,
+        explicacion: "Roll-up es la operación de resumir datos subiendo en la jerarquía de una dimensión (ej. de días a meses)."
+    },
+    {
+        texto: "Las claves primarias deben preservarse durante la carga.",
+        opciones: ["True", "False"],
+        respuesta: 0,
+        explicacion: "Mantener la integridad referencial y la unicidad de los registros es vital durante el proceso de carga ETL."
+    },
+    {
+        texto: "Las claves sustitutas ayudan a mantener integridad en el DW.",
+        opciones: ["False", "True"],
+        respuesta: 1,
+        explicacion: "Las claves sustitutas (surrogate keys) son identificadores internos del DW que aíslan los cambios en las claves del sistema fuente."
+    },
+    {
+        texto: "Las dimensiones representan ejes de análisis, como tiempo o producto.",
+        opciones: ["True", "False"],
+        respuesta: 0,
+        explicacion: "En un modelo dimensional, las dimensiones proporcionan el contexto (quién, qué, cuándo) para analizar las métricas."
+    },
+    {
+        texto: "Las cargas deben programarse para evitar interferencias.",
+        opciones: ["False", "True"],
+        respuesta: 1,
+        explicacion: "Las cargas ETL suelen programarse en horarios de baja actividad para no afectar el rendimiento de los sistemas operacionales."
+    },
+    {
+        texto: "Las fuentes de datos pueden ser bases de datos, archivos planos o APIs.",
+        opciones: ["True", "False"],
+        respuesta: 0,
+        explicacion: "BI es capaz de ingerir y combinar datos de múltiples tipos de fuentes heterogéneas."
+    },
+    {
+        texto: "El monitoreo de reportes permite detectar errores.",
+        opciones: ["True", "False"],
+        respuesta: 0,
+        explicacion: "Monitorear el uso y la generación de reportes ayuda a identificar fallos en los datos o problemas de rendimiento."
+    },
+    {
+        texto: "El mantenimiento del despliegue debe ser continuo.",
+        opciones: ["False", "True"],
+        respuesta: 1,
+        explicacion: "BI no es un proyecto de una sola vez; requiere mantenimiento continuo para adaptarse a nuevos requisitos y datos."
+    },
+    {
+        texto: "El mantenimiento del despliegue garantiza:",
+        opciones: ["Borrado de métricas", "Pérdida de histórico", "Reducción de seguridad", "Actualización y consistencia de los datos presentados"],
+        respuesta: 3,
+        explicacion: "Un buen mantenimiento asegura que la información siga siendo relevante, precisa y esté actualizada para los usuarios."
+    },
+    {
+        texto: "El mantenimiento evita obsolescencia en reportes.",
+        opciones: ["True", "False"],
+        respuesta: 0,
+        explicacion: "Revisar y actualizar los reportes periódicamente asegura que sigan respondiendo a las necesidades actuales del negocio."
     }
 ];
 
