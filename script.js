@@ -42,14 +42,175 @@ const correosPermitidos = [
 // --- 3. BANCO DE PREGUNTAS (Inteligencia de Negocios) ---
 // ⚠️ ATENCIÓN: Debes reemplazar estas 5 preguntas de ejemplo por tus 64 preguntas de la materia
 const bancoPreguntas = [
-    // EJEMPLOS DE PREGUNTAS DE INTELIGENCIA DE NEGOCIOS
-    { texto: "¿Qué significa el acrónimo BI?", opciones: ["Business Integration", "Business Intelligence", "Binary Indexing", "Banking Initiative"], respuesta: 1, explicacion: "BI significa Business Intelligence o Inteligencia de Negocios." },
-    { texto: "El proceso ETL se refiere a:", opciones: ["Estandarización, Traslado, Lógica", "Extracción, Transformación, Carga", "Entrada, Testeo, Liberación", "Ejecución, Trazabilidad, Listado"], respuesta: 1, explicacion: "ETL es Extracción, Transformación y Carga (Extract, Transform, Load)." },
-    { texto: "¿Cuál es una herramienta popular de visualización de datos en BI?", opciones: ["Python", "MySQL", "Tableau", "Apache Kafka"], respuesta: 2, explicacion: "Tableau es una herramienta líder para la visualización de datos." },
-    { texto: "El objetivo principal de un Data Warehouse es:", opciones: ["Gestionar transacciones diarias", "Almacenar datos históricos y consolidados para el análisis", "Servir páginas web", "Crear copias de seguridad"], respuesta: 1, explicacion: "Un Data Warehouse (Almacén de Datos) se usa para el análisis de datos históricos." },
-    { texto: "Un KPI (Key Performance Indicator) es:", opciones: ["Un tipo de base de datos NoSQL", "Un indicador clave de rendimiento", "Un lenguaje de programación", "Un algoritmo de cifrado"], respuesta: 1, explicacion: "KPI significa Indicador Clave de Rendimiento." },
-    // AÑADE AQUÍ TUS 64 PREGUNTAS REALES DE INTELIGENCIA DE NEGOCIOS
-    //...
+    // PREGUNTAS DE INTELIGENCIA DE NEGOCIOS
+    {
+        texto: "Adoptar tendencias emergentes es una ventaja.",
+        opciones: ["Falso", "Verdadero"],
+        respuesta: 1,
+        explicacion: "Adoptar nuevas tendencias permite a las empresas mantenerse competitivas y aprovechar oportunidades tempranas."
+    },
+    {
+        texto: "Complete: Un DW debe mantener datos...",
+        opciones: ["Eliminar monitoreo", "Anticiparse a cambios del mercado", "Reaccionar tarde siempre", "Ignorar cliente"],
+        respuesta: 1,
+        explicacion: "El análisis en un Data Warehouse facilita la predicción y anticipación a los cambios del mercado (Nota: El texto original de esta pregunta en el PDF contenía un error de tipografía, se ajustó al contexto de las opciones)."
+    },
+    {
+        texto: "Complete: Un Data Warehouse debe mantener datos",
+        opciones: ["Históricos", "Anónimos", "Volátiles", "Temporales sin trazas"],
+        respuesta: 0,
+        explicacion: "La función principal de un DW es almacenar datos históricos para permitir el análisis de tendencias a lo largo del tiempo."
+    },
+    {
+        texto: "BI ayuda a:",
+        opciones: ["Evitar visualizaciones", "Eliminar controles", "Aumentar tiempos de respuesta", "Optimizar procesos y detectar ineficiencias"],
+        respuesta: 3,
+        explicacion: "La Inteligencia de Negocios busca identificar puntos de mejora para optimizar el rendimiento operativo."
+    },
+    {
+        texto: "Compartir visualizaciones suele ser más fácil que tablas crudas.",
+        opciones: ["Verdadero", "Falso"],
+        respuesta: 0,
+        explicacion: "Las visualizaciones resumen información compleja de manera gráfica, facilitando su comprensión rápida frente a los datos crudos."
+    },
+    {
+        texto: "Complete: Un diagrama de ______ ilustra planificación temporal de tareas.",
+        opciones: ["Secuencia", "Árbol", "Gantt", "Red"],
+        respuesta: 2,
+        explicacion: "El diagrama de Gantt es la herramienta estándar para visualizar la cronología y planificación de proyectos."
+    },
+    {
+        texto: "Complete: 'Load' almacena datos transformados en el Data",
+        opciones: ["Socket", "Warehouse", "Frame", "Sheet"],
+        respuesta: 1,
+        explicacion: "En el proceso ETL, la carga (Load) deposita los datos finales en el Data Warehouse."
+    },
+    {
+        texto: "Complete: Un KPI debe estar",
+        opciones: ["Alineado a objetivos del negocio", "Aislado", "Oculto", "Contradictorio"],
+        respuesta: 0,
+        explicacion: "Para ser efectivo, un Indicador Clave de Desempeño (KPI) debe medir el progreso hacia objetivos estratégicos concretos."
+    },
+    {
+        texto: "BI ayuda a anticipar cambios del mercado.",
+        opciones: ["Verdadero", "Falso"],
+        respuesta: 0,
+        explicacion: "El análisis predictivo de BI permite identificar tendencias futuras y adaptar la estrategia antes que ocurran los cambios."
+    },
+    {
+        texto: "Business Intelligence (BI) es:",
+        opciones: ["Un ERP de finanzas", "El proceso de transformar datos en información valiosa", "Un único dashboard", "Un lenguaje de programación"],
+        respuesta: 1,
+        explicacion: "BI se define como el conjunto de procesos y tecnologías para convertir datos brutos en información útil para la toma de decisiones."
+    },
+    {
+        texto: "La calidad de los datos extraídos depende de:",
+        opciones: ["El número de columnas extraídas", "La integridad y disponibilidad de las fuentes", "El formato de salida", "La cantidad de transformaciones aplicadas"],
+        respuesta: 1,
+        explicacion: "Si la fuente de datos no es íntegra o fiable (GIGO: Garbage In, Garbage Out), el resultado del análisis será deficiente."
+    },
+    {
+        texto: "La carga completa reemplaza todo el contenido anterior.",
+        opciones: ["Falso", "Verdadero"],
+        respuesta: 1,
+        explicacion: "Una carga completa borra los datos existentes y los sustituye totalmente por los nuevos, a diferencia de la carga incremental."
+    },
+    {
+        texto: "El exceso de elementos visuales puede distraer.",
+        opciones: ["Verdadero", "Falso"],
+        respuesta: 0,
+        explicacion: "La sobrecarga visual dificulta que el usuario enfoque su atención en los datos importantes (ruido visual)."
+    },
+    {
+        texto: "La carga es la última fase del proceso ETL.",
+        opciones: ["Falso", "Verdadero"],
+        respuesta: 1,
+        explicacion: "El orden es Extracción, Transformación y Carga (Load), siendo esta última la fase final hacia el destino."
+    },
+    {
+        texto: "La carga mal configurada puede producir datos incompletos.",
+        opciones: ["Verdadero", "Falso"],
+        respuesta: 0,
+        explicacion: "Errores en la configuración pueden causar pérdida de registros, truncamiento de datos o nulos no deseados."
+    },
+    {
+        texto: "El diseño visual debe buscar:",
+        opciones: ["Contrastes irrelevantes", "Exceso de elementos", "Complejidad visual", "Claridad, coherencia y enfoque informativo"],
+        respuesta: 3,
+        explicacion: "El objetivo principal de la visualización es comunicar información de manera clara, eficiente y sin ambigüedades."
+    },
+    {
+        texto: "El exceso de color puede distraer al usuario.",
+        opciones: ["Falso", "Verdadero"],
+        respuesta: 1,
+        explicacion: "El uso indiscriminado de colores reduce el contraste efectivo y cansa la vista, distrayendo del mensaje de los datos."
+    },
+    {
+        texto: "La consistencia de datos se asegura mediante validaciones.",
+        opciones: ["Falso", "Verdadero"],
+        respuesta: 1,
+        explicacion: "Las reglas de validación garantizan que los datos cumplan con los formatos y lógica de negocio requeridos."
+    },
+    {
+        texto: "BI ayuda a:",
+        opciones: ["Evitar visualizaciones", "Optimizar procesos y detectar ineficiencias", "Eliminar controles", "Aumentar tiempos de respuesta"],
+        respuesta: 1,
+        explicacion: "Al igual que en la pregunta 4, BI es fundamental para la mejora continua y la eficiencia operativa."
+    },
+    {
+        texto: "BI puede apoyar decisiones operativas y estratégicas.",
+        opciones: ["Falso", "Verdadero"],
+        respuesta: 1,
+        explicacion: "BI sirve tanto para el día a día (operativo) como para la planificación a largo plazo (estratégico)."
+    },
+    {
+        texto: "BI siempre ignora datos externos.",
+        opciones: ["Verdadero", "Falso"],
+        respuesta: 1,
+        explicacion: "Falso. BI integra datos internos y externos (mercado, competidores, economía) para un análisis completo."
+    },
+    {
+        texto: "BI siempre ignora datos externos.",
+        opciones: ["Falso", "Verdadero"],
+        respuesta: 0,
+        explicacion: "Reiteración: BI se enriquece con datos del entorno, no los ignora."
+    },
+    {
+        texto: "BI no requiere visualización.",
+        opciones: ["Verdadero", "Falso"],
+        respuesta: 1,
+        explicacion: "La visualización es crítica en BI para hacer comprensibles los grandes volúmenes de datos analizados."
+    },
+    {
+        texto: "Adoptar tendencias emergentes es una ventaja.",
+        opciones: ["Verdadero", "Falso"],
+        respuesta: 0,
+        explicacion: "Mantenerse actualizado tecnológicamente ofrece ventajas competitivas sostenibles."
+    },
+    {
+        texto: "BI apoya a la organización a:",
+        opciones: ["Reaccionar tarde siempre", "Ignorar clientes", "Eliminar monitoreo", "Anticiparse a cambios del mercado"],
+        respuesta: 3,
+        explicacion: "La capacidad predictiva de BI permite a las empresas ser proactivas en lugar de reactivas."
+    },
+    {
+        texto: "BI ayuda a anticipar cambios del mercado.",
+        opciones: ["Falso", "Verdadero"],
+        respuesta: 1,
+        explicacion: "Analizando patrones históricos y actuales, BI facilita la previsión de tendencias."
+    },
+    {
+        texto: "BI sólo aplica a grandes empresas.",
+        opciones: ["Verdadero", "Falso"],
+        respuesta: 1,
+        explicacion: "Falso. BI es escalable y beneficia a PyMEs y grandes corporaciones por igual mediante herramientas adaptadas."
+    },
+    {
+        texto: "BI no ayuda a optimizar procesos.",
+        opciones: ["Falso", "Verdadero"],
+        respuesta: 0,
+        explicacion: "Falso. Uno de los propósitos centrales de BI es precisamente la optimización de procesos mediante datos."
+    }
 ];
 
 // VARIABLES GLOBALES
